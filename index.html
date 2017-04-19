@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title>Calculate area using points</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+	<script type="text/javascript" src="controller.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<div ng-controller="Form">
+		<h1 align="center">Enter Co-ordinates</h1>
+		<form>
+			<div class="form-group" id="myForm" align="center">
+				<fieldset data-ng-repeat="point in points">
+					<input type="number" step="0.01" ng-model="point.x" placeholder="x co-ordinate"></input>
+					<input type="number" step="0.01" ng-model="point.y" placeholder="y co-ordinate"></input>
+					<button class="remove" ng-if="points.length > 3" ng-show="$last" ng-click="removeField()">-</button>
+				</fieldset>
+				<br/>
+				<label for="favcolor"> Color:
+				<input type="color" name="favcolor" value="#ff0000" ng-model="color">
+				<br/><br/>
+				<button class="btn btn-default" ng-click="addNewField()">Add a new set of co-ordinates</button>
+				<button class="btn btn-default" ng-click="calculateAndRenderArea()">Calculate and render area</button>
+				<button class="btn btn-default" ng-click="clearCanvas()">Clear</button>
+			</div>
+		</form>
+	<div id="">
+		<h3 class="area" ng-show="area!=null" align="center">Area: {{ area }} units</h3>		
+	</div>
+	</div>
+	<canvas id="canvas" class="canvas" height="200" width="200"></canvas>
+</body>
+</html>
