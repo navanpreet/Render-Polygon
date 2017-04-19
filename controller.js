@@ -32,8 +32,8 @@ app.controller('Form', function($scope){
 			coordinate.push($scope.points[i].y);
 			polygon.push(coordinate);
 		}
-
-		$scope.area = findArea(polygon)
+		let numOfPoints = polygon.length;
+		$scope.area = findArea(polygon, numOfPoints)
 
 		let canvas = document.getElementById("canvas");
 		let ctx = canvas.getContext('2d');
@@ -71,8 +71,7 @@ function scalepolygongon(polygon) {
 	return polygon;
 }
 
-function findArea(polygon){
-	let numOfPoints = polygon.length;
+function findArea(polygon, numOfPoints){
 	let area = 0;
 	for (let i = 0, l = numOfPoints; i < l; i++) {
 		let addX = polygon[i][0];
